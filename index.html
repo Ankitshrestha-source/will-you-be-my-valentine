@@ -3,156 +3,229 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valentine Interactive</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Gift Galore Nepal</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{
-  height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:linear-gradient(135deg,#ffd1dc,#ffe4e1,#e0c3fc);
-  overflow:hidden;
-  transition:background 0.6s ease;
-}
-.container{
-  width:90%;
-  max-width:520px;
-  text-align:center;
-  background:rgba(255,255,255,0.18);
-  backdrop-filter:blur(18px);
-  border-radius:28px;
-  padding:45px 30px;
-  box-shadow:0 12px 35px rgba(0,0,0,0.18);
-  position:relative;
-  animation:floatBox 4s ease-in-out infinite;
-}
-@keyframes floatBox{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
-h1{font-size:2rem;margin-bottom:15px;}
-.message{margin-top:20px;font-size:0.95rem;line-height:1.7;opacity:0;transform:translateY(15px);transition:all 0.8s ease;}
-.message.show{opacity:1;transform:translateY(0);}
-.emoji{font-size:2.3rem;margin-bottom:10px;animation:heartbeat 1.2s infinite;display:block;}
-@keyframes heartbeat{0%,100%{transform:scale(1);}50%{transform:scale(1.25);}}
-button{padding:12px 30px;border:none;border-radius:30px;font-size:1rem;cursor:pointer;transition:all 0.3s ease;box-shadow:0 6px 18px rgba(0,0,0,0.2);margin:10px;}
-button:hover{transform:translateY(-3px) scale(1.05);}
-.yes-btn{background:#ff4d6d;color:white;position:relative;z-index:2;}
-.no-btn{background:#6c757d;color:white;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:1;}
-.hidden{display:none;}
-canvas{position:fixed;top:0;left:0;pointer-events:none;}
-.heart{
-  position:absolute;
-  font-size:20px;
-  animation:rise 3s linear forwards;
-}
-@keyframes rise{
-  0%{opacity:1; transform:translateY(0) scale(1);}
-  100%{opacity:0; transform:translateY(-150px) scale(1.5);}
-}
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #fff; color: #333; }
+a {text-decoration: none; color: inherit;}
+.container {width: 90%; max-width: 1200px; margin: auto;}
+
+header { background: linear-gradient(to right, #FFD700, #FFFFFF); padding: 20px 0; text-align: center; font-size: 2rem; font-weight: bold; color: #333; }
+
+nav { display: flex; justify-content: center; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+nav a { margin: 0 15px; padding: 15px 0; display: block; color: #333; font-weight: bold; }
+nav a:hover { color: #FFD700; }
+
+.banner { background: #FFD700; text-align: center; padding: 60px 20px; font-size: 1.8rem; color: #fff; }
+
+.products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+.product-card { border: 1px solid #ddd; padding: 20px; text-align: center; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+.product-card input[type='file'], .product-card input[type='text'], .product-card input[type='number'] { margin: 10px 0; width: 90%; padding: 8px; }
+.product-card button { background: #FFD700; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; border-radius: 4px; }
+.product-card button:hover { background: #e6c200; }
+
+.cart { margin: 40px 0; }
+.cart h2 { text-align: center; margin-bottom: 20px; }
+.cart-items { max-width: 900px; margin: auto; border: 1px solid #ddd; padding: 20px; border-radius: 8px; }
+.cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+.cart-item-info { max-width: 400px; }
+.cart-item img { width: 150px; height: 150px; object-fit: cover; border-radius: 4px; margin-left: 10px; }
+.remove-btn { background: #ff4d4d; border: none; padding: 5px 10px; cursor: pointer; color: #fff; border-radius: 4px; font-size: 0.9rem; margin-top: 10px;}
+.remove-btn:hover { background: #e60000; }
+
+.checkout-form input, .checkout-form textarea { width: 100%; padding: 10px; margin: 10px 0; border-radius: 4px; border: 1px solid #ccc; }
+.checkout-form button { background: #FFD700; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; border-radius: 4px; }
+
+footer { background: #333; color: #fff; text-align: center; padding: 20px; margin-top: 40px; }
 </style>
 </head>
 <body>
-<div class="container">
-    <span id="heartEmoji" class="emoji">💖</span>
-    <h1>Will you be my Valentine?</h1>
 
-    <div id="buttons">
-        <button class="yes-btn" id="yesBtn">YES</button>
-        <button class="no-btn" id="noBtn">NO</button>
+<header>Gift Galore Nepal</header>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#shop">Shop</a>
+<a href="#cart">Cart</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<section class="banner" id="home">
+Customize your frames & posters – Upload your design & make it personal!
+</section>
+
+<section class="container" id="shop">
+<h2 style="text-align:center; margin-bottom: 30px;">Our Products</h2>
+<div class="products">
+    <div class="product-card" data-price="350">
+        <h3>Mini Frame</h3>
+        <img src="https://i.postimg.cc/02PZSJKx/mini-frame.jpg" alt="Mini Frame" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
+        <input type="file" accept="image/*" class="upload">
+        <input type="text" placeholder="Add custom text" class="customText">
+        <input type="number" placeholder="Quantity" min="1" value="1" class="quantity">
+        <button onclick="addToCart(this)">Add to Cart</button>
     </div>
-
-    <div id="loveMessage" class="message"></div>
+    <div class="product-card" data-price="650">
+        <h3>Folding Frame</h3>
+        <img src="https://i.postimg.cc/VkM6c54S/folding-frame.jpg" alt="Folding Frame" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
+        <input type="file" accept="image/*" class="upload">
+        <input type="text" placeholder="Add custom text" class="customText">
+        <input type="number" placeholder="Quantity" min="1" value="1" class="quantity">
+        <button onclick="addToCart(this)">Add to Cart</button>
+    </div>
+    <div class="product-card" data-price="500">
+        <h3>Customize Cup</h3>
+        <img src="https://i.postimg.cc/h4zh0Cx0/custamizable-cup.jpg" alt="Customize Cup" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
+        <input type="file" accept="image/*" class="upload">
+        <input type="text" placeholder="Add custom text" class="customText">
+        <input type="number" placeholder="Quantity" min="1" value="1" class="quantity">
+        <button onclick="addToCart(this)">Add to Cart</button>
+    </div>
+    <div class="product-card" data-price="800">
+        <h3>Customize Pillow</h3>
+        <img src="https://i.postimg.cc/4dK4BdY5/custamizable-pillow.jpg" alt="Customize Pillow" style="width:100%; height:200px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
+        <input type="file" accept="image/*" class="upload">
+        <input type="text" placeholder="Add custom text" class="customText">
+        <input type="number" placeholder="Quantity" min="1" value="1" class="quantity">
+        <button onclick="addToCart(this)">Add to Cart</button>
+    </div>
 </div>
+</section>
 
-<canvas id="confetti"></canvas>
+<section class="container cart" id="cart">
+<h2>Your Cart</h2>
+<div class="cart-items" id="cartItems">
+    <p>No items in cart.</p>
+</div>
+<p id="totalQty" style="text-align:center; font-weight:bold;">Total Items: 0</p>
+<p id="totalPrice" style="text-align:center; font-weight:bold;">Total Price: Rs 0</p>
+</section>
+
+<section class="container" id="contact">
+<h2 style="text-align:center; margin-bottom: 30px;">Checkout / Place Order</h2>
+<form class="checkout-form" action="https://formspree.io/f/xaqdeppk" method="POST" enctype="multipart/form-data" onsubmit="return attachCartImages()">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="phone" placeholder="Phone Number" required>
+    <input type="text" name="location" placeholder="Delivery Location" required>
+    <textarea name="notes" placeholder="Order Notes" rows="5"></textarea>
+    <div id="cartImagesContainer"></div>
+    <button type="submit">Place Order</button>
+</form>
+<p style="text-align:center; color:#555;">Your order will be sent to our email directly!</p>
+</section>
+
+<footer>
+&copy; 2026 Gift Galore Nepal | All rights reserved
+</footer>
 
 <script>
-let noClicks = 0;
-const yesBtn = document.getElementById('yesBtn');
-const noBtn = document.getElementById('noBtn');
-const buttonsDiv = document.getElementById('buttons');
-const msg = document.getElementById('loveMessage');
-const canvas = document.getElementById('confetti');
-const ctx = canvas.getContext('2d');
-let confettiPieces = [];
-let confettiActive = false;
+let cart = [];
 
-// Resize canvas
-function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
-resize();
-window.addEventListener('resize', resize);
-
-// Move NO button randomly
-noBtn.addEventListener('mouseenter', ()=>{
-  const x = Math.random()*(window.innerWidth - 100);
-  const y = Math.random()*(window.innerHeight - 50);
-  noBtn.style.left = x + 'px';
-  noBtn.style.top = y + 'px';
-});
-
-// YES button grows when NO is hovered
-noBtn.addEventListener('mouseenter', ()=>{
-  noClicks++;
-  let newSize = 1 + noClicks*0.3;
-  yesBtn.style.transform = `scale(${newSize})`;
-  yesBtn.style.transition='transform 0.3s ease';
-});
-
-// YES button click
-yesBtn.addEventListener('click', ()=>{
-  msg.innerHTML=`<b>By clicking YES you agree to:</b><br><br>
-  • Forever being my favorite person ❤️<br>
-  • Unlimited hugs 🤗<br>
-  • Night Walk karenge sath me<br>
-  • Jhyada kalesh mat karna<br>
-  • holding hands ✋❤️<br>
-  • I LOVE YOU MY LOVE<br>
-  <br>
-  <b>Valid for lifetime. No cancellation. 💌</b>`;
-  msg.classList.add('show');
-  buttonsDiv.classList.add('hidden');
-  startConfetti();
-  startHeartParticles();
-});
-
-// Confetti animation
-function startConfetti(){
-  confettiActive = true;
-  confettiPieces = Array.from({length:150},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height-canvas.height,r:Math.random()*6+4}));
-  animateConfetti();
-  setTimeout(()=>{confettiActive=false;ctx.clearRect(0,0,canvas.width,canvas.height);},5000);
+function resizeImage(file, maxWidth, maxHeight, callback) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+            let width = img.width; let height = img.height;
+            if(width > height) { if(width > maxWidth) { height = Math.round(height * maxWidth / width); width = maxWidth; } }
+            else { if(height > maxHeight) { width = Math.round(width * maxHeight / height); height = maxHeight; } }
+            const canvas = document.createElement('canvas'); canvas.width = width; canvas.height = height;
+            const ctx = canvas.getContext('2d'); ctx.drawImage(img, 0, 0, width, height);
+            callback(canvas.toDataURL('image/jpeg', 0.8));
+        };
+        img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
 }
 
-function animateConfetti(){
-  if(!confettiActive) return;
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  ctx.fillStyle='rgba(255,105,180,0.9)';
-  confettiPieces.forEach(p=>{
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fill();
-    p.y+=2.5;
-    if(p.y>canvas.height)p.y=-10;
-  });
-  requestAnimationFrame(animateConfetti);
+function addToCart(button) {
+    const card = button.parentElement;
+    const title = card.querySelector('h3').innerText;
+    const fileInput = card.querySelector('.upload');
+    const customText = card.querySelector('.customText').value.trim();
+    const quantity = parseInt(card.querySelector('.quantity').value);
+    const price = parseInt(card.dataset.price);
+    const file = fileInput.files[0];
+
+    if(!file) { alert('Please upload an image'); return; }
+    if(file.size > 12*1024*1024) { alert('File too large! Max 12MB.'); return; }
+
+    resizeImage(file, 800, 800, function(resizedBase64) {
+        cart.push({ title, customText, quantity, price, imageBase64: resizedBase64 });
+        updateCart();
+    });
 }
 
-// Heart particles
-function startHeartParticles(){
-  const container = document.querySelector('.container');
-  let count = 0;
-  const interval = setInterval(()=>{
-    if(count>20){clearInterval(interval); return;}
-    const heart = document.createElement('span');
-    heart.className='heart';
-    heart.style.left=Math.random()*80 + '%';
-    heart.style.fontSize=(10+Math.random()*20)+'px';
-    heart.textContent='❤️';
-    container.appendChild(heart);
-    setTimeout(()=>heart.remove(),3000);
-    count++;
-  },150);
+function updateCart() {
+    const cartItems = document.getElementById('cartItems');
+    const totalQtyEl = document.getElementById('totalQty');
+    const totalPriceEl = document.getElementById('totalPrice');
+
+    if(cart.length === 0) {
+        cartItems.innerHTML = '<p>No items in cart.</p>';
+        totalQtyEl.innerText = 'Total Items: 0';
+        totalPriceEl.innerText = 'Total Price: Rs 0';
+        return;
+    }
+
+    cartItems.innerHTML = '';
+    let totalQty = 0;
+    let totalPrice = 0;
+
+    cart.forEach((item, index) => {
+        const itemTotal = item.quantity * item.price;
+        totalQty += item.quantity;
+        totalPrice += itemTotal;
+
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+            <div class="cart-item-info">
+                <strong>${item.title}</strong><br>
+                Quantity: ${item.quantity}<br>
+                Price per item: Rs ${item.price}<br>
+                Total: Rs ${itemTotal}<br>
+                <em>${item.customText || 'No custom text'}</em>
+            </div>
+            <div style="display:flex; flex-direction:column; align-items:center;">
+                <img src='${item.imageBase64}' alt='${item.title}'>
+                <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+            </div>
+        `;
+        cartItems.appendChild(div);
+    });
+
+    totalQtyEl.innerText = `Total Items: ${totalQty}`;
+    totalPriceEl.innerText = `Total Price: Rs ${totalPrice}`;
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCart();
+}
+
+function attachCartImages() {
+    const container = document.getElementById('cartImagesContainer');
+    container.innerHTML = '';
+
+    if(cart.length === 0) { alert("Your cart is empty!"); return false; }
+
+    cart.forEach((item, index) => {
+        ['image', 'customText', 'quantity', 'productTitle', 'price'].forEach(key => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = `${key}_${index}`;
+            input.value = key === 'image' ? item.imageBase64 :
+                          key === 'customText' ? item.customText || '' :
+                          key === 'quantity' ? item.quantity :
+                          key === 'productTitle' ? item.title : item.quantity * item.price;
+            container.appendChild(input);
+        });
+    });
+
+    return true;
 }
 </script>
+
 </body>
 </html>
